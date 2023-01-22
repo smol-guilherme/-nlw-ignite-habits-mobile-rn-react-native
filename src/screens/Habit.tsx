@@ -47,12 +47,8 @@ export function Habit() {
     fetchHabits();
   }, []);
 
-  console.log(completedHabits);
-
   async function handleToggleHabits(habitId: string) {
     if (completedHabits.includes(habitId)) {
-      console.log("includes", habitId);
-
       setCompletedHabits((prevState) =>
         prevState.filter((id) => id !== habitId)
       );
