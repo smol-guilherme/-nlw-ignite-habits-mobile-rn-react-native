@@ -10,6 +10,7 @@ import { Loading } from "../components/Loading";
 import { generateProgressPercentage } from "../utils/generate-progress-percentage";
 import { api } from "../lib/axios";
 import dayjs from "dayjs";
+import { EmptyHabits } from "../components/EmptyHabits";
 
 interface Params {
   date: string;
@@ -93,7 +94,7 @@ export function Habit() {
         <ProgressBar progress={habitsProgress} />
 
         <View className="mt-8">
-          {dayInfo?.possibleHabits &&
+          {dayInfo?.possibleHabits ? (
             dayInfo?.possibleHabits.map((habit) => (
               <Checkbox
                 key={habit.id}
@@ -101,7 +102,10 @@ export function Habit() {
                 checked={completedHabits.includes(habit.id)}
                 onPress={() => handleToggleHabits(habit.id)}
               ></Checkbox>
-            ))}
+            ))
+          ) : (
+            <EmptyHabits />
+          )}
         </View>
       </ScrollView>
     </View>
