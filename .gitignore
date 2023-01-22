@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 .git
-.env.*
+.env*
 !.env.example
 
 # macOS
